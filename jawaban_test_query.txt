@@ -1,0 +1,20 @@
+```JAWABAN TEST QUERY (SOAL 3)```
+
+3.1) buatlah query untuk menampilkan peserta dengan gaji tertinggi
+SELECT * FROM `kawahedukasi`
+WHERE gaji = (SELECT MAX(gaji) FROM `kawahedukasi`);
+
+3.2) buatlah query untuk menampilkan peserta BACKEND dengan nilai tertinggi dan gaji tertinggi
+SELECT * FROM `kawahedukasi` 
+WHERE nilai=(SELECT MAX(nilai) FROM `kawahedukasi` WHERE kelas='BACKEND') 
+AND gaji=(SELECT MAX(gaji) FROM `kawahedukasi` WHERE kelas='BACKEND');
+
+3.3) buatlah query untuk melihat total peserta yang berada dalam kelas frontend
+SELECT COUNT(*) as 'Total Peserta FRONTEND'
+FROM `kawahedukasi`
+WHERE kelas='FRONTEND';
+
+3.4) buatlah query untuk menampilkan jumlah kehadiran tertinggi dan nilai tertinggi dalam kelas frontend
+SELECT * FROM `kawahedukasi` 
+WHERE kelas='FRONTEND' AND nilai=(SELECT MAX(nilai) FROM `kawahedukasi` WHERE kelas='FRONTEND') 
+AND jumlah_kehadiran=(SELECT MAX(jumlah_kehadiran) FROM `kawahedukasi` WHERE kelas='FRONTEND');
